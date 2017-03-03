@@ -15,7 +15,10 @@ df = pd.read_csv(filename, header=None, names=DataLabels, sep=',\s', na_values=[
 df = df.dropna(how='any')
 
 #array of characterist column
-column_arr = ['age', 'fnlwgt', 'education-num' , 'capital-gain' ,'capital-loss', 'hours-per-week']
+value_columns = ['age', 'fnlwgt', 'education-num' , 'capital-gain' ,'capital-loss', 'hours-per-week']
+# quality_columns = [w.replace('[br]', '<br />') for w in words]
+quality_columns = ['workclass', 'education','marital-status','occupation','relationship','race', 'sex', 'native-country','class']
+
 
 #maior, menor valor, media e desvio padrao
 atribute = []
@@ -24,7 +27,7 @@ max_value = []
 average_value = []
 standard_deviation = []
 
-for index, name in enumerate(column_arr):
+for index, name in enumerate(value_columns):
 
     atribute.insert( index, name)
     min_value.insert( index, df[name].min())
@@ -43,18 +46,30 @@ relatory_table = {
 }
 
 relatory_table = pd.DataFrame(relatory_table)
-relatory_table.to_csv('relatory_adult.csv')
+relatory_table.to_csv('adult/relatory_adult.csv')
 
 # normalize value column data || verificar education-num
 scaler = MinMaxScaler()
-df[column_arr] = scaler.fit_transform(df[column_arr])
-# df[['age']] = scaler.fit_transform(df[['age']])
+df[value_columns] = scaler.fit_transform(df[value_columns])
 
 #replace class values
+for index, name in enumerate(quality_columns):
+
+    #get unique values
+    unique_values = df[name].unique()
+
+    class_array = []
+    value_array = []
+
+    for index_, unique_name in enumerate(unique_values):
+        df[name].replace([unique_name], index_)
+        class_array.insert( index_, unique_name)
+        value_array.insert( index_, index_)
+
+    relatory_quality_table = {'class' : class_array , 'value' : value_array }
+    relatory_quality_table = pd.DataFrame(relatory_quality_table)
+    relatory_quality_table.to_csv('adult/class_' + name + '_table.csv')
+
 
 #export data
-df.to_csv('proccessed_adult.csv')
-
-#plot
-# plt.hist(df['age'], 30, normed=True) #Number of breaks is 30
-# plt.show()
+df.to_csv('adult/proccessed_adult.csv')
