@@ -1,0 +1,15 @@
+http://archive.ics.uci.edu/ml/datasets/Iris
+http://archive.ics.uci.edu/ml/datasets/Adult
+http://archive.ics.uci.edu/ml/datasets/Wine
+https://archive.ics.uci.edu/ml/datasets/Wine+Quality
+https://archive.ics.uci.edu/ml/datasets/Abalone
+https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original)
+
+//normalize data
+http://scikit-learn.org/stable/modules/preprocessing.html
+
+//example normalizing some colluns
+http://stackoverflow.com/questions/24645153/pandas-dataframe-columns-scaling-with-sklearn
+
+//coisa marota 
+http://stackoverflow.com/questions/29247712/pandas-how-to-replace-with-nan-handling-non-standard-missing-values
