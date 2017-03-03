@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 DataLabels =["age", "workclass", "fnlwgt", "education", "education-num", "marital-status",
                "occupation", "relationship", "race", "sex", "capital-gain",
-               "capital-loss", "hours-per-week", "native-country", "class"] 
+               "capital-loss", "hours-per-week", "native-country", "class"]
 
 filename = 'data/adult.data'
 
@@ -22,10 +22,28 @@ atribute = []
 min_value = []
 max_value = []
 average_value = []
-standard = []
+standard_deviation = []
 
-for name in column_arr:
-	print(name)
+for index, name in enumerate(column_arr):
+
+    atribute.insert( index, name)
+    min_value.insert( index, df[name].min())
+    max_value.insert( index, df[name].max())
+    average_value.insert( index, df[name].mean())
+    standard_deviation.insert( index, df[name].std())
+
+
+relatory_table = {
+
+    'atribute' : atribute,
+    'min_value' : min_value,
+    'max_value' : max_value,
+    'average_value' : average_value,
+    'standard_deviation' : standard_deviation
+}
+
+relatory_table = pd.DataFrame(relatory_table)
+relatory_table.to_csv('relatory_adult.csv')
 
 # normalize value column data || verificar education-num
 scaler = MinMaxScaler()
