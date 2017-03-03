@@ -50,14 +50,15 @@ for index, name in enumerate(value_columns):
 
 relatory_table = {
 
-    'atribute' : atribute,
-    'min_value' : min_value,
-    'max_value' : max_value,
-    'average_value' : average_value,
-    'standard_deviation' : standard_deviation
+    'Atributo' : atribute,
+    'Menor Valor' : min_value,
+    'Maior Valor' : max_value,
+    'Média' : average_value,
+    'Desvio Padrão' : standard_deviation
 }
 
 relatory_table = pd.DataFrame(relatory_table)
+relatory_table = relatory_table.round(3)
 relatory_table.to_csv('breast-cancer/relatory_breast-cancer.csv')
 
 # normalize value column data || verificar education-num
@@ -77,10 +78,11 @@ for index, name in enumerate(quality_columns):
         class_array.insert( index_, unique_name)
         value_array.insert( index_, index_)
 
-    relatory_quality_table = {'class' : class_array , 'value' : value_array }
+    relatory_quality_table = {" " + name : class_array , 'Valor' : value_array }
     relatory_quality_table = pd.DataFrame(relatory_quality_table)
     relatory_quality_table.to_csv('breast-cancer/class_' + name + '_table.csv')
 
 
 #export data
+df = df.round(3)
 df.to_csv('breast-cancer/proccessed_breast-cancer.csv')

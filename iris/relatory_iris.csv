@@ -1,9 +1,5 @@
-,atribute,average_value,max_value,min_value,standard_deviation
-0,Length,,,,
-1,Diameter,,,,
-2,Height,,,,
-3,Whole_weight,,,,
-4,Shucked_weight,,,,
-5,Viscera_weight,,,,
-6,Shell_weight,,,,
-7,Rings,,,,
+,Atributo,Desvio Padrão,Maior Valor,Menor Valor,Média
+0,sepal_length,0.828,7.9,4.3,5.843
+1,sepal_width,0.434,4.4,2.0,3.054
+2,petal_length,1.764,6.9,1.0,3.759
+3,petal_width,0.763,2.5,0.1,1.199
